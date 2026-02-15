@@ -130,12 +130,17 @@ button:hover {
   justify-content: center;
 }
 
+/* Card chiếm toàn bộ màn hình */
 .fullscreen-mode #card-display {
-  width: 90vw;
-  height: 70vh;
-  font-size: 40px;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  border-radius: 0;
+  font-size: 50px; /* mặt trước to */
+  padding: 20px;
 }
 
+/* Ẩn toàn bộ UI */
 .fullscreen-mode #study-buttons,
 .fullscreen-mode #fullscreen-btn,
 .fullscreen-mode h2,
@@ -143,7 +148,6 @@ button:hover {
 .fullscreen-mode button[onclick="showManage()"] {
   display: none !important;
 }
-
 /* ===========================
    MOBILE RESPONSIVE
 =========================== */
@@ -161,3 +165,4 @@ button:hover {
     width: 90%;
   }
 }
+
