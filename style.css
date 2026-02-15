@@ -131,9 +131,10 @@ button:hover {
 .fullscreen-mode #card-display {
   position: absolute;
   inset: 0;
-  width: 100vw;
+  width: 100vw !important;
   height: 100vh;
-   background: red;
+  max-width: none !important;
+
 
   display: flex;
   align-items: center;
@@ -178,6 +179,7 @@ button:hover {
     width: 90%;
   }
 }
+
 
 
 
