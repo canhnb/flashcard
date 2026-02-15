@@ -7,6 +7,9 @@
 </head>
 <body>
 
+  <!-- Splash Screen -->
+  <div id="splash">Flashcard App</div>
+
   <h1>Flashcard Decks</h1>
 
   <!-- Tạo deck -->
@@ -36,11 +39,13 @@
     <div id="study-area">
       <div id="card-display" class="card"></div>
 
+      <!-- Nút full-screen -->
+      <button id="fullscreen-btn">Full screen</button>
+
       <!-- Hai nút nằm cùng hàng -->
       <div id="study-buttons">
         <button onclick="backHome()">← Quay lại</button>
         <button onclick="nextCard()">Next →</button>
-        <button onclick="toggleFullscreen()">Full screen</button>
       </div>
     </div>
 
@@ -55,5 +60,4 @@
 
   <script src="app.js"></script>
 </body>
-
 </html>
