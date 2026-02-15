@@ -172,46 +172,31 @@ function deleteCard(i) {
 }
 
 /* -------------------------
-      FULLSCREEN MODE
+      FULLSCREEN MODE (CSS)
 --------------------------*/
 
 document.getElementById("fullscreen-btn").addEventListener("click", toggleFullscreen);
 
 function toggleFullscreen() {
   const deckView = document.getElementById("deck-view");
-
-  if (!deckView.classList.contains("fullscreen-mode")) {
-    deckView.classList.add("fullscreen-mode");
-  } else {
-    deckView.classList.remove("fullscreen-mode");
-  }
+  deckView.classList.toggle("fullscreen-mode");
 }
 
 /* -------------------------
-      SWIPE GESTURES
+      SWIPE GESTURES (FIXED)
 --------------------------*/
 
 let touchStartX = 0;
+let touchStartY = 0;
 let touchEndX = 0;
+let touchEndY = 0;
 
 const swipeZone = document.getElementById("card-display");
 
 swipeZone.addEventListener("touchstart", (e) => {
   touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
 });
-
-swipeZone.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-});
-
-function handleSwipe() {
-  const distance = touchEndX - touchStartX;
-
-  if (Math.abs(distance) < 50) return;
-
-  nextCard();
-}
 
 swipeZone.addEventListener("touchend", (e) => {
   touchEndX = e.changedTouches[0].screenX;
@@ -228,7 +213,6 @@ function handleSwipe() {
     nextCard();
   } else {
     if (dy > 80) {
-      // Vuốt xuống → thoát fullscreen
       document.getElementById("deck-view").classList.remove("fullscreen-mode");
     }
   }
@@ -239,5 +223,3 @@ function handleSwipe() {
 --------------------------*/
 
 renderDecks();
-
-
