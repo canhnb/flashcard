@@ -142,13 +142,13 @@ button:hover {
   border-radius: 0 !important;
   padding: 0 !important;
 
-  font-size: 50px; /* mặt trước to */
+  font-size: 100px; /* mặt trước to */
   font-weight: 700;
 }
 
 /* Mặt sau giữ nguyên font-size cũ */
 .fullscreen-mode #card-display:not(.front-text) {
-  font-size: 24px;
+  font-size: 50px;
   font-weight: normal;
 }
 
@@ -177,5 +177,6 @@ button:hover {
     width: 90%;
   }
 }
+
 
 
