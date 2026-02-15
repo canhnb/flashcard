@@ -172,3 +172,43 @@ function deleteCard(i) {
 
 
 renderDecks(); // load deck khi mở trang
+
+function toggleFullscreen() {
+  const elem = document.documentElement;
+
+  if (!document.fullscreenElement) {
+    elem.requestFullscreen().catch(err => {
+      console.log(err);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+const swipeZone = document.getElementById("card-display");
+
+swipeZone.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+swipeZone.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const distance = touchEndX - touchStartX;
+
+  if (Math.abs(distance) < 50) return; // tránh swipe nhẹ
+
+  if (distance < 0) {
+    // Vuốt trái → Next
+    nextCard();
+  } else {
+    // Vuốt phải → Next (hoặc quay lại nếu bạn muốn)
+    nextCard();
+  }
+}
