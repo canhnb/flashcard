@@ -163,7 +163,7 @@ button:hover {
   position: fixed;
   inset: 0;
   background: white;
-  z-index: 999;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,3 +183,4 @@ button:hover {
 .fullscreen-mode button[onclick="showManage()"] {
   display: none !important;
 }
+
