@@ -12,9 +12,10 @@ body {
 
 /* Khung hiển thị thẻ */
 #card-display {
-  width: 280px;
+  width: 90%;              /* co giãn theo màn hình */
+  max-width: 320px;        /* không quá to trên tablet */
   height: 180px;
-  background: #fff;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +24,8 @@ body {
   padding: 10px;
   border-radius: 12px;
   border: 2px solid #333;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
 /* MẶT TRƯỚC: chữ to – đậm */
@@ -33,7 +36,8 @@ body {
 #study-buttons {
   display: flex;
   justify-content: space-between;
-  width: 280px;
+  width: 90%;
+  max-width: 320px;
   margin-top: 10px;
 }
 
@@ -44,4 +48,26 @@ body {
   font-size: 16px;
   cursor: pointer;
 
+}
+
+@media (max-width: 480px) {
+  .front-text {
+    font-size: 24px;   /* giảm nhẹ cho mobile */
+  }
+
+  #card-display {
+    height: 150px;     /* card thấp hơn để vừa màn hình */
+  }
+
+  #study-buttons {
+    width: 90%;
+  }
+}
+:fullscreen #card-display {
+  height: 60vh;
+  font-size: 40px;
+}
+
+:fullscreen .front-text {
+  font-size: 48px;
 }
