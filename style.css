@@ -158,3 +158,28 @@ button:hover {
     width: 90%;
   }
 }
+
+.fullscreen-mode {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullscreen-mode #card-display {
+  width: 90vw;
+  height: 70vh;
+  font-size: 40px;
+}
+
+.fullscreen-mode #study-buttons,
+.fullscreen-mode #fullscreen-btn,
+.fullscreen-mode h2,
+.fullscreen-mode #create-card,
+.fullscreen-mode button[onclick="showManage()"] {
+  display: none !important;
+}
