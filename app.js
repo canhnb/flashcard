@@ -83,6 +83,13 @@ function addCard() {
   save();
 
   remainingCards = [...decks[currentDeckIndex].cards];
+
+  // 👉 Làm trống ô nhập liệu sau khi thêm thẻ
+  document.getElementById("front").value = "";
+  document.getElementById("back").value = "";
+
+  // 👉 Đưa con trỏ về ô mặt trước cho tiện nhập tiếp
+  document.getElementById("front").focus();
 }
 
 function nextCard() {
@@ -162,5 +169,6 @@ function deleteCard(i) {
 /* -------------------------
       INITIAL LOAD
 --------------------------*/
+
 
 renderDecks(); // load deck khi mở trang
