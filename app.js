@@ -84,11 +84,8 @@ function addCard() {
 
   remainingCards = [...decks[currentDeckIndex].cards];
 
-  // 👉 Làm trống ô nhập liệu sau khi thêm thẻ
   document.getElementById("front").value = "";
   document.getElementById("back").value = "";
-
-  // 👉 Đưa con trỏ về ô mặt trước cho tiện nhập tiếp
   document.getElementById("front").focus();
 }
 
@@ -104,20 +101,28 @@ function nextCard() {
   const idx = Math.floor(Math.random() * remainingCards.length);
   const card = remainingCards[idx];
 
-  // MẶT TRƯỚC: chữ to – đậm
-  display.textContent = card.front;
-  display.classList.add("front-text");
-  showingBack = false;
+  display.classList.remove("flip");
+  setTimeout(() => {
+    display.textContent = card.front;
+    display.classList.add("front-text");
+    showingBack = false;
+  }, 150);
 
   display.onclick = () => {
-    if (!showingBack) {
-      display.textContent = card.back;
-      display.classList.remove("front-text"); // mặt sau bình thường
-    } else {
-      display.textContent = card.front;
-      display.classList.add("front-text"); // mặt trước to – đậm
-    }
-    showingBack = !showingBack;
+    display.classList.add("flip");
+
+    setTimeout(() => {
+      if (!showingBack) {
+        display.textContent = card.back;
+        display.classList.remove("front-text");
+      } else {
+        display.textContent = card.front;
+        display.classList.add("front-text");
+      }
+      showingBack = !showingBack;
+
+      display.classList.remove("flip");
+    }, 150);
   };
 
   remainingCards.splice(idx, 1);
@@ -167,23 +172,26 @@ function deleteCard(i) {
 }
 
 /* -------------------------
-      INITIAL LOAD
+      FULLSCREEN MODE
 --------------------------*/
 
-
-renderDecks(); // load deck khi mở trang
+document.getElementById("fullscreen-btn").addEventListener("click", toggleFullscreen);
 
 function toggleFullscreen() {
   const elem = document.documentElement;
 
-  if (!document.fullscreenElement) {
-    elem.requestFullscreen().catch(err => {
-      console.log(err);
-    });
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    if (elem.requestFullscreen) elem.requestFullscreen();
+    else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
   } else {
-    document.exitFullscreen();
+    if (document.exitFullscreen) document.exitFullscreen();
+    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
   }
 }
+
+/* -------------------------
+      SWIPE GESTURES
+--------------------------*/
 
 let touchStartX = 0;
 let touchEndX = 0;
@@ -202,13 +210,13 @@ swipeZone.addEventListener("touchend", (e) => {
 function handleSwipe() {
   const distance = touchEndX - touchStartX;
 
-  if (Math.abs(distance) < 50) return; // tránh swipe nhẹ
+  if (Math.abs(distance) < 50) return;
 
-  if (distance < 0) {
-    // Vuốt trái → Next
-    nextCard();
-  } else {
-    // Vuốt phải → Next (hoặc quay lại nếu bạn muốn)
-    nextCard();
-  }
+  nextCard();
 }
+
+/* -------------------------
+      INITIAL LOAD
+--------------------------*/
+
+renderDecks();
