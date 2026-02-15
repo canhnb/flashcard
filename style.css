@@ -144,7 +144,7 @@ button:hover {
   border-radius: 0 !important;
   padding: 0 !important;
 
-  font-size: 200px; /* mặt trước to */
+  font-size: 170px; /* mặt trước to */
   font-weight: 700;
 }
 
@@ -179,6 +179,7 @@ button:hover {
     width: 90%;
   }
 }
+
 
 
 
