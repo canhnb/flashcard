@@ -225,9 +225,43 @@ function exportData() {
 
   URL.revokeObjectURL(url);
 }
+
+function triggerImport() {
+  document.getElementById("import-file").click();
+}
+
+document.getElementById("import-file").addEventListener("change", importData);
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    try {
+      const imported = JSON.parse(e.target.result);
+
+      if (!Array.isArray(imported)) {
+        alert("File không hợp lệ!");
+        return;
+      }
+
+      decks = imported;
+      save();
+      renderDecks();
+      alert("Đã nhập dữ liệu thành công!");
+    } catch (err) {
+      alert("File lỗi hoặc không đúng định dạng JSON!");
+    }
+  };
+
+  reader.readAsText(file);
+}
 /* -------------------------
       INITIAL LOAD
 --------------------------*/
 
 renderDecks();
+
 
