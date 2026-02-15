@@ -213,8 +213,21 @@ function handleSwipe() {
   }
 }
 
+function exportData() {
+  const data = JSON.stringify(decks, null, 2); // toàn bộ dữ liệu
+  const blob = new Blob([data], { type: "application/json" });
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "flashcards_backup.json"; // tên file xuất ra
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
 /* -------------------------
       INITIAL LOAD
 --------------------------*/
 
 renderDecks();
+
