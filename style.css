@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.deck, .card {
+  border: 1px solid #333;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+/* Khung hiển thị thẻ */
+#card-display {
+  width: 280px;
+  height: 180px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #333;
+}
+
+/* MẶT TRƯỚC: chữ to – đậm */
+.front-text {
+  font-size: 32px;
+  font-weight: 700;
+}
+#study-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 280px;
+  margin-top: 10px;
+}
+
+#study-buttons button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}

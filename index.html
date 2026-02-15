@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Flashcard App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Flashcard Decks</h1>
+
+  <!-- Tạo deck -->
+  <div id="create-deck">
+    <input id="deck-name" placeholder="Tên deck">
+    <button onclick="addDeck()">Tạo deck</button>
+  </div>
+
+  <!-- Danh sách deck -->
+  <div id="deck-list"></div>
+
+  <!-- VIEW DECK -->
+  <div id="deck-view" style="display:none;">
+    <h2 id="deck-title"></h2>
+
+    <!-- Tạo thẻ -->
+    <div id="create-card">
+      <input id="front" placeholder="Mặt trước">
+      <input id="back" placeholder="Mặt sau">
+      <button onclick="addCard()">Thêm thẻ</button>
+    </div>
+
+    <!-- Nút quản lý thẻ -->
+    <button onclick="showManage()">Quản lý thẻ</button>
+
+    <!-- Study mode -->
+    <div id="study-area">
+      <div id="card-display" class="card"></div>
+
+      <!-- Hai nút nằm cùng hàng -->
+      <div id="study-buttons">
+        <button onclick="backHome()">← Quay lại</button>
+        <button onclick="nextCard()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Manage cards -->
+    <div id="manage-area" style="display:none;">
+      <h3>Danh sách thẻ</h3>
+      <div id="manage-list"></div>
+      <button onclick="hideManage()">Đóng</button>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
