@@ -133,6 +133,7 @@ button:hover {
   inset: 0;
   width: 100vw;
   height: 100vh;
+   background: red;
 
   display: flex;
   align-items: center;
@@ -177,6 +178,7 @@ button:hover {
     width: 90%;
   }
 }
+
 
 
 
