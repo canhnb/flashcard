@@ -124,20 +124,32 @@ button:hover {
   inset: 0;
   background: white;
   z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: block; /* QUAN TRỌNG: bỏ flex để card chiếm full */
 }
 
 /* Card chiếm toàn bộ màn hình */
 .fullscreen-mode #card-display {
+  position: absolute;
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  border: none;
-  border-radius: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+
   font-size: 50px; /* mặt trước to */
-  padding: 20px;
+  font-weight: 700;
+}
+
+/* Mặt sau giữ nguyên font-size cũ */
+.fullscreen-mode #card-display:not(.front-text) {
+  font-size: 24px;
+  font-weight: normal;
 }
 
 /* Ẩn toàn bộ UI */
@@ -165,4 +177,5 @@ button:hover {
     width: 90%;
   }
 }
+
 
