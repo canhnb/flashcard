@@ -62,21 +62,12 @@ button:hover {
   padding: 10px;
   border-radius: 12px;
   border: 2px solid #333;
-
-  /* Flip animation */
   transition: transform 0.3s ease;
-  transform-style: preserve-3d;
 }
 
-/* Mặt trước: chữ to – đậm */
 .front-text {
   font-size: 32px;
   font-weight: 700;
-}
-
-/* Flip effect (không làm chữ bị ngược) */
-.flip {
-  transform: scaleX(-1);
 }
 
 /* ===========================
@@ -125,39 +116,8 @@ button:hover {
 }
 
 /* ===========================
-   FULLSCREEN MODE
+   FULLSCREEN MODE (CSS)
 =========================== */
-
-:fullscreen #card-display {
-  height: 60vh;
-  font-size: 40px;
-}
-
-:fullscreen .front-text {
-  font-size: 48px;
-}
-
-:fullscreen #study-buttons {
-  width: 95%;
-}
-
-/* ===========================
-   MOBILE RESPONSIVE
-=========================== */
-
-@media (max-width: 480px) {
-  .front-text {
-    font-size: 24px;
-  }
-
-  #card-display {
-    height: 150px;
-  }
-
-  #study-buttons {
-    width: 90%;
-  }
-}
 
 .fullscreen-mode {
   position: fixed;
@@ -184,3 +144,20 @@ button:hover {
   display: none !important;
 }
 
+/* ===========================
+   MOBILE RESPONSIVE
+=========================== */
+
+@media (max-width: 480px) {
+  .front-text {
+    font-size: 24px;
+  }
+
+  #card-display {
+    height: 150px;
+  }
+
+  #study-buttons {
+    width: 90%;
+  }
+}
