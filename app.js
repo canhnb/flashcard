@@ -178,14 +178,12 @@ function deleteCard(i) {
 document.getElementById("fullscreen-btn").addEventListener("click", toggleFullscreen);
 
 function toggleFullscreen() {
-  const elem = document.documentElement;
+  const deckView = document.getElementById("deck-view");
 
-  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-    if (elem.requestFullscreen) elem.requestFullscreen();
-    else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+  if (!deckView.classList.contains("fullscreen-mode")) {
+    deckView.classList.add("fullscreen-mode");
   } else {
-    if (document.exitFullscreen) document.exitFullscreen();
-    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    deckView.classList.remove("fullscreen-mode");
   }
 }
 
@@ -215,8 +213,30 @@ function handleSwipe() {
   nextCard();
 }
 
+swipeZone.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  touchEndY = e.changedTouches[0].screenY;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const dx = touchEndX - touchStartX;
+  const dy = touchEndY - touchStartY;
+
+  if (Math.abs(dx) > Math.abs(dy)) {
+    if (Math.abs(dx) < 50) return;
+    nextCard();
+  } else {
+    if (dy > 80) {
+      // Vuốt xuống → thoát fullscreen
+      document.getElementById("deck-view").classList.remove("fullscreen-mode");
+    }
+  }
+}
+
 /* -------------------------
       INITIAL LOAD
 --------------------------*/
 
 renderDecks();
+
