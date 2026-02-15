@@ -101,28 +101,19 @@ function nextCard() {
   const idx = Math.floor(Math.random() * remainingCards.length);
   const card = remainingCards[idx];
 
-  display.classList.remove("flip");
-  setTimeout(() => {
-    display.textContent = card.front;
-    display.classList.add("front-text");
-    showingBack = false;
-  }, 150);
+  display.textContent = card.front;
+  display.classList.add("front-text");
+  showingBack = false;
 
   display.onclick = () => {
-    display.classList.add("flip");
-
-    setTimeout(() => {
-      if (!showingBack) {
-        display.textContent = card.back;
-        display.classList.remove("front-text");
-      } else {
-        display.textContent = card.front;
-        display.classList.add("front-text");
-      }
-      showingBack = !showingBack;
-
-      display.classList.remove("flip");
-    }, 150);
+    if (!showingBack) {
+      display.textContent = card.back;
+      display.classList.remove("front-text");
+    } else {
+      display.textContent = card.front;
+      display.classList.add("front-text");
+    }
+    showingBack = !showingBack;
   };
 
   remainingCards.splice(idx, 1);
@@ -208,10 +199,14 @@ function handleSwipe() {
   const dx = touchEndX - touchStartX;
   const dy = touchEndY - touchStartY;
 
+  // Vuốt ngang → Next
   if (Math.abs(dx) > Math.abs(dy)) {
     if (Math.abs(dx) < 50) return;
     nextCard();
-  } else {
+  }
+
+  // Vuốt xuống → Thoát fullscreen
+  else {
     if (dy > 80) {
       document.getElementById("deck-view").classList.remove("fullscreen-mode");
     }
