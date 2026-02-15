@@ -27,7 +27,7 @@ body {
 
 /* MẶT TRƯỚC: chữ to – đậm */
 .front-text {
-  font-size: 32px;
+  font-size: 50px;
   font-weight: 700;
 }
 #study-buttons {
@@ -43,4 +43,5 @@ body {
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
+
 }
